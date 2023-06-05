@@ -10,11 +10,10 @@ jobs:
 
     steps:
       - name: Checkout Repo
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
-         persist-credentials: false
-         fetch-depth: 0
+         token: ${{ secrets.PERSON_ACCESS_TOKEN }}
 
       - name: Push to Wiki
         run: |
-          git push -q https://Richasy:${{ secrets.PERSONAL_ACCESS_TOKEN }}@github.com/Richasy/FantasyCopilot.wiki.git main:master --force
+          git push -q https://Richasy:${{ secrets.PERSON_ACCESS_TOKEN }}@github.com/Richasy/FantasyCopilot.wiki.git main:master --force
