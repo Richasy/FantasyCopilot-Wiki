@@ -17,4 +17,4 @@ jobs:
 
       - name: Push to Wiki
         run: |
-          git push -q https://Richasy:${{ secrets.GITHUB_TOKEN }}@github.com/Richasy/FantasyCopilot.wiki.git main:master --force
+          git push -q https://Richasy:${{ secrets.PERSONAL_ACCESS_TOKEN }}@github.com/Richasy/FantasyCopilot.wiki.git main:master --force
