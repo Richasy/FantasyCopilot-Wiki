@@ -8,6 +8,7 @@
 
 * [[Installation and Building]] ✨
 * [[Service Configuration]] 🔑
+* [[Prompt and Session]] 🧾
 
 ### How to Contribute
 
