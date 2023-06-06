@@ -1,5 +1,3 @@
-# Installation and Building
-
 ### Installation
 
 We recommend installing from the Microsoft Store as it is safer and faster.

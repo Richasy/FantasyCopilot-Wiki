@@ -1,5 +1,3 @@
-# Service Configuration
-
 If you want to experience the full functionality of Fantasy Copilot, you need to have the following services:
 
 - Azure Open AI or Open AI
