@@ -1,14 +1,4 @@
-<p align="center">
-<img src="./images/StoreLogo.png" width="64px"/>
-</p>
-
-<div align="center">
-
-# Fantasy Copilot
-
-</div>
-
-## Installation and Building
+# Installation and Building
 
 ### Installation
 

@@ -1,13 +1,13 @@
 ### About
 
 * [[Home]] 🐣
-* [[Overview]] ✨
 * [[License]] 📃
-* [[Privacy]] 🫷
+* [[Privacy]] 🙅
 
 ### Tutorial
 
-* *Under construction*
+* [[Installation and Building]] ✨
+* [[Service Configuration]] 🔑
 
 ### How to Contribute
 
