@@ -86,7 +86,7 @@ It should be noted that when you enter a session snapshot, unless you manually s
 
 **Remove message**
 
-你可以右键点击某个消息，并直接从聊天记录中删除它，这有助于你进行一些调试。
+You can right-click on a message and directly delete it from the chat history, which can help you with some debugging.
 
 ![](images/prompt_session_remove_message.png)
 
