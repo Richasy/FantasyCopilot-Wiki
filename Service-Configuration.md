@@ -66,7 +66,18 @@ If you don't have Azure Translator service yet, please refer to this documentati
 
 Then, in the "Keys and Endpoint" section, copy the values of the `Key` and `Location/Region` to their corresponding settings.
 
-![](./images/service_configuration_translate.png)
+<img src="./images/service_configuration_azure_translate.png" width="550px">
+
+## Baidu Translate
+
+To use Baidu Translate, the following steps need to be taken (if you already have a developer account on Baidu Translate Open Platform, please skip to step 4):
+
+1. Open the [Baidu Translate Open Platform](http://api.fanyi.baidu.com/).
+2. Log in or register for an account.
+3. Access the console.
+4. Click on "Developer Information" and copy the "APP ID" and "Key" into the corresponding settings of your application.
+
+<img src="./images/service_configuration_baidu_translate.png" width="550px">
 
 ## Everything
 
