@@ -159,7 +159,7 @@ Once the plugin is successfully imported, you will see it appear in the list of 
 
 Let's try building a new workflow.
 
-When adding steps, you can find your `Say Hello` command under the Text directory. Let's use it to try some simple input and output.
+When adding steps, you can find your `Say Hello` command under the `Text` directory. Let's use it to try some simple input and output.
 
 <img src="./images/plugin_app_plugin_simple_test.png" width="440px">
 
