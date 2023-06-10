@@ -9,6 +9,7 @@
 * [[Installation and Building]] ✨
 * [[Service Configuration]] 🔑
 * [[Prompt and Session]] 🧾
+* [[Workflow Overview]] 🖇️
 
 ### How to Contribute
 
