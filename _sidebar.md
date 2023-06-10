@@ -10,6 +10,7 @@
 * [[Service Configuration]] 🔑
 * [[Prompt and Session]] 🧾
 * [[Workflow Overview]] 🖇️
+* [[Create Plugins]] 🔌
 
 ### How to Contribute
 

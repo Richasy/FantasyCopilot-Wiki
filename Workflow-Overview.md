@@ -18,7 +18,7 @@ If a step requires a variable provided by another step, there is a dependency be
 |-|-|
 |{{$ORIGINAL}}|Retrieve initial input content.|
 |{{$INPUT}}|Standard variable used to retrieve the output content from the previous step.|
-|{{$STEPRESULT_i}}|To obtain the result of a specified step, `i` represents the step number, starting from **0**. If you want to obtain the result of the second step, you can use `{{$STEPRESULT_1}}` in the third step or any subsequent steps. |
+|{{$STEP_RESULT_i}}|To obtain the result of a specified step, `i` represents the step number, starting from **0**. If you want to obtain the result of the second step, you can use `{{$STEPRESULT_1}}` in the third step or any subsequent steps. |
 |{{$TEXT_TO_IMAGE_i}}|To obtain the image metadata information for the step in the document generation process, where `i` represents the step's sequence number in the overall task queue.|
 |{{$KNOWLEDGE_SOURCE_i}}|The source of knowledge for retrieving information from the knowledge base for question answering (usually in the form of a file name), where `i` is the step number of the knowledge base question answering process in the overall task queue.|
 
