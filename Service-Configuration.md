@@ -16,7 +16,7 @@ Azure Open AI is closely related to Open AI as it is a service deployed on Azure
 
 ### Azure Open AI
 
-Assuming that you already have Azure Open AI service deployed. If you haven't deployed Azure Open AI yet, please refer to this documentation:[How to access Azure Open AI](https://learn.microsoft.com/azure/cognitive-services/openai/overview#how-do-i-get-access-to-azure-openai)
+Assuming that you already have Azure Open AI service deployed. If you haven't deployed Azure Open AI yet, please refer to this documentation: [How to access Azure Open AI](https://learn.microsoft.com/azure/cognitive-services/openai/overview#how-do-i-get-access-to-azure-openai)
 
 In the application configuration interface (first launch or settings page), switch the AI configuration to **Azure Open AI** and expand the settings section.
 
@@ -26,7 +26,9 @@ In your Azure portal, open the deployed Open AI service and switch to "Keys and 
 
 In model deployment, please fill in the names of the models you deployed according to their types, respectively in `Chat`, `Embedding`, and `Text completion`.
 
-Regarding the types of deployable models in Azure Open AI, you can refer to this document:[Azure OpenAI Service models](https://learn.microsoft.com/azure/cognitive-services/openai/concepts/models)
+> ***Attention! The name to be filled in here is the name of your deployment, not the name of the model itself, unless your deployment name is the same as the original name.***
+
+Regarding the types of deployable models in Azure Open AI, you can refer to this document: [Azure OpenAI Service models](https://learn.microsoft.com/azure/cognitive-services/openai/concepts/models)
 
 After filling out the form, switch to the "New session" module in the bottom navigation bar, and you will be able to see that the chat service is available.
 
