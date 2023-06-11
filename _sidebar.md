@@ -9,8 +9,10 @@
 * [[Installation and Building]] ✨
 * [[Service Configuration]] 🔑
 * [[Prompt and Session]] 🧾
+* [[Knowledge Base]] 📇
 * [[Workflow Overview]] 🖇️
 * [[Create Plugins]] 🔌
+* [[Plugin Configuration]] 🛠️
 
 ### How to Contribute
 
