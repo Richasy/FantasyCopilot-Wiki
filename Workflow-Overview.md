@@ -1,10 +1,22 @@
 ## What is a workflow?
 
-The workflow of Fantasy Copilot is a solution that combines the execution code and model Q&A through Semantic Kernel to form an automated path.
+The workflow of Fantasy Copilot is a solution that combines the execution code and model Q&A through `Semantic Kernel` to form an automated path.
 
 The workflow is linear and currently does not support branching, such as conditional statements or loops. It primarily uses text as input and output.
 
 Each step in the workflow receives text input from the previous step and outputs text as input for the next step.
+
+---
+
+Personally, I don't see Workflow as just an automation tool. To me, it's more like an experimental field. 
+
+For example, by combining `speech recognition`, `Q&A`, and `text-to-speech`, you can create a workflow that allows for a conversation with artificial intelligence. 
+
+Similarly, by combining `speech recognition`, `GPT translation`, and `text-to-speech`, you can create a workflow that could potentially replace an interpreter. 
+
+When it comes to AI, we have many ideas, and the significance of Workflow is that it helps you quickly build a path to realize your ideas, validate your prototypes, and explore new possibilities. 
+
+So, enjoy it!
 
 ## Context
 
@@ -115,6 +127,8 @@ Clicking it will prompt the application to automatically arrange a task chain fo
 ### Expanding application capabilities
 
 The application comes with a set of built-in commands that are part of the Fantasy Copilot app. Additionally, the app supports the use of plugins to expand the command library.
+
+Fantasy Copilot provides a simple core library in `src/PluginSkills`. You can view the source code by opening `FantasyCopilot.PluginSkills.sln` in the project root directory. Alternatively, you can check out the latest built package in the [Release](https://github.com/Richasy/FantasyCopilot/releases) section.
 
 You can either write your own plugins or reference others' plugins to enrich your command library.
 

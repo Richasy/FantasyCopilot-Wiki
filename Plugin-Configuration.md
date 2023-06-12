@@ -2,6 +2,8 @@ When creating a plugin, there is only one `config.json` file, which contains inf
 
 In this article, we will introduce the main parts of the configuration file in three modules.
 
+> If you want to see actual examples, you can check the `src/PluginSkills` in the project.
+
 ## Package Properties
 
 We need some properties to define the plugin you create, which determines how your package will be presented to users. Here is the property table:

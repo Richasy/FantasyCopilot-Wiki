@@ -59,7 +59,57 @@ Your documents will be converted into vectors (multidimensional arrays) during t
 
 After completing the above steps, you can wait quietly for the import to complete.
 
-## Workflow
+## Usage
+
+Once you have created a knowledge base, you can enter it by clicking on it.
+
+### Quick Q&A
+
+If you have a question and want to find the closest answer directly in the knowledge base, you can ask in `Quick Q&A`.
+
+The application will find the most relevant context based on the current settings and answer your question accordingly.
+
+You can see the source of the answer from the message.
+
+<img src="./images/knowledge_quick_qa.png" width="440px">
+
+### Advanced Search
+
+If simple Q&A is not enough, you may want to find the original text in the knowledge base based on a question or some content. Then you can try advanced search.
+
+In advanced search, you can enter the content you want to query in the top input box. After clicking `Enter`, the application will list some related contexts (sorted by relevance).
+
+<img src="./images/knowledge_advanced_search.png" width="480px">
+
+You can click the `Full content` button of each context item to view the full content of the context.
+
+![](images/knowledge_context_full_content.png)
+
+You can select several contexts, and then click `Generate Answer`, and the knowledge base will generate an answer based on the selected contexts.
+
+<img src="./images/knowledge_generate_answer.png" width="480px">
+
+This method has the following advantages:
+
+1. You can view the original text.
+2. Manually select context for more reliable answers.
+3. You can save the current query results as an excerpt.
+
+## Knowledge Base Settings
+
+After reading the above content, you may have some questions:
+
+1. What if I want more context?
+2. How can I prevent my article from being truncated when saved?
+3. ...
+
+I have provided some settings for the knowledge base, but they are not located on the knowledge base page. Instead, they can be found in the settings page.
+
+<img src="./images/knowledge_settings.png" width="460px"/>
+
+You can adjust these values according to your own model or preferences to build your own knowledge base.
+
+## How it works
 
 We import documents into the knowledge base and perform question-answering, and the underlying workflow is roughly as follows:
 
@@ -68,6 +118,8 @@ We import documents into the knowledge base and perform question-answering, and 
 3. In the database, vector similarity matching is performed, and when the specified similarity is reached, the matching result is returned as context.
 4. We combine the obtained context and our question (both in natural language) and send them to the text completion model through Prompt.
 5. The model provides an answer based on the context and question.
+
+As the generation of answers requires the participation of dialogue or text completion models, you can also set model parameters for the current session in the knowledge base, such as `Temperature`.
 
 *Prompt*
 
