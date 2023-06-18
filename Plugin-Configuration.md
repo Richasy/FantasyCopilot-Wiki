@@ -36,6 +36,7 @@ All commands need to be written under the `commands` attribute, and the specific
 | execute_name | Y | Executable file name (or path) | plugin.exe |
 | category | N | Category, please refer to [Command Categories](#command-categories) for specific command categories | text |
 | only_final_output | N | The application will read the text you print on the console as the output of the command. If you only need the application to read the text of the last output, please set it to `true` | false |
+| need_admin | N | This indicates that the command may require administrator privileges. When the user adds this command to the workflow, the application will detect the current user level. If the user is not an administrator, a prompt will be displayed. | false |
 | config_set | N | Configuration items displayed on the UI when the user configures the command | Please refer to [Command Configuration](#command-configuration) |
 | parameters | N | List of parameters required to execute the command | Please refer to [Command Parameters](#command-parameters) |
 | output | Y | The output method of the command | Please refer to [Command Output](#command-output) |
@@ -79,10 +80,11 @@ If your command supports multiple invocation methods and requires users to selec
 
 | Property Name | Required? | Description | Example Value |
 | --- | --- | --- | --- |
-| id | Y | The variable name in the workflow context | xx |
+| id | N | The variable name in the workflow context | xx |
 | name | Y | The parameter name in the command line | xx |
 | description | N | The description of the parameter, which will inform the user of its purpose (supports localization) | xx |
 | required | N | If the parameter is required, set it to `true`. If the parameter is missing, the workflow will be interrupted and an error will be reported. | `false` |
+| default_value| N | When the Id is empty or the value of the specified Id cannot be obtained, the default value will be passed as a parameter to the execution program. | xxx |
 
 You may be confused about why we need both `id` and `name`.
 
@@ -91,6 +93,8 @@ In fact, when designing plugin commands, the parameters we provide are usually g
 However, as the workflow context is a key-value pair, if multiple commands attempt to write to the same key, we cannot guarantee that the value will be reliable.
 
 Therefore, when writing to the context, we usually give a specific key, such as `SPECIFIC_PREFIX_TYPE`, and then convert it to the command line parameter we preset when calling the command.
+
+*Sometimes, if we need to pass default parameters, we can pass them by setting the `id` to empty and only filling in the `name` and `default_value`.*
 
 ### Command Output
 
@@ -154,6 +158,7 @@ If the language currently used by the user is not in your list of supported lang
       "command_id": "guid",
       "category": "text",
       "only_final_output": true,
+      "need_admin": false,
       "config_set": [
         {
           "type": "input",
@@ -179,6 +184,7 @@ If the language currently used by the user is not in your list of supported lang
           "id": "Input",
           "name": "Input",
           "description": "",
+          "default_value": "Yo!",
           "required": true
         }
       ],
