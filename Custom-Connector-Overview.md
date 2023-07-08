@@ -172,7 +172,7 @@ Finally, we convert the response into `CopilotMessageResponse` and return it.
 
 It should be noted that the model may encounter errors (such as exceeding the token window or other runtime exceptions) during the process of generating the response, so the necessary try-catch helps us understand the cause of the error and allows Fantasy Copilot to display the corresponding error UI.
 
-#### 5. Running and Testing
+### Running and Testing
 
 Now that we have an endpoint, it's time to run the API service!
 
@@ -206,7 +206,7 @@ If all goes well, you should see the following response in the image below:
 
 This means that our API service has been successfully built!
 
-#### 6. Writing the Connector Manifest File
+### Writing the Connector Manifest File
 
 In order to tell Fantasy Copilot how to properly use this connector, you need to create a `connector.json` in the project root directory and use it to define your connector.
 
@@ -244,7 +244,7 @@ Finally, we add the `/chat` endpoint, `chat` supports three endpoint types:
 - `chat-stream`: After sending the request, return a streaming response in SSE (Server-Send Events) mode (typewriter mode).
 - `chat-stream-cancel`: End the generation process of `chat-stream` in advance.
 
-#### 7. Packaging and Importing
+### Packaging and Importing
 
 Now we have a folder with our `api.py`, `connector.json` and model folder `model`.
 
@@ -276,7 +276,7 @@ Then click `Import Connector`, and in the pop-up file selector, select the `fcto
 
 Wait for the import to complete, and then you can find the conversation model we just imported in the `Chat model name`!
 
-#### 8. Start new session
+### Start new session
 
 Now, switch to the session page and start chatting with ChatGLM2-6B!
 
