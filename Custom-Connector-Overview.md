@@ -276,8 +276,8 @@ Then click `Import Connector`, and in the pop-up file selector, select the `fcto
 
 Wait for the import to complete, and then you can find the conversation model we just imported in the `Chat model name`!
 
-#### 8. Start Conversation
+#### 8. Start new session
 
-Now, switch to the conversation page and start chatting with ChatGLM2-6B!
+Now, switch to the session page and start chatting with ChatGLM2-6B!
 
 <img src="./images/connector_chatglm_chat.png" width="450px">
