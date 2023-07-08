@@ -13,6 +13,8 @@
 * [[Workflow Overview]] 🖇️
 * [[Create Plugins]] 🔌
 * [[Plugin Configuration]] 🛠️
+* [[Custom Connector Overview]] 🪢
+* [[Connector Configuration]] 🛠️
 
 ### How to Contribute
 
