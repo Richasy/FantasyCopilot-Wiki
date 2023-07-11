@@ -1,64 +1,96 @@
-本文旨在说明 Custom Connector 的配置结构，你可以在 [Custom connector examples](https://github.com/Richasy/FantasyCopilot/tree/main/examples/custom-connector) 中找到 `Chat`, `Text Completion` 和 `Embedding` 的Python示例。
+This article aims to explain the configuration structure of Custom Connector, and you can find Python examples of `Chat`, `Text Completion` and `Embedding` in [Custom connector examples](https://github.com/Richasy/FantasyCopilot/tree/main/examples/custom-connector).
 
-## 连接器属性
+## Data Structures of Messages and Responses
 
-这里是一些连接器的定义，它们决定连接器如何被显示、分类以及启动。
+For how to use these data structures, please refer to [[Custom Connector Overview]]
+
+```python
+from pydantic import BaseModel
+
+class Message(BaseModel):
+    role: str
+    content: str
+
+class RequestSettings(BaseModel):
+    temperature: float
+    maxResponseTokens: int
+    topP: float
+    frequencyPenalty: float
+    presencePenalty: float
+
+class CopilotChatRequest(BaseModel):
+    message: str
+    history: List[Message]
+    settings: RequestSettings
+
+class CopilotTextRequest(BaseModel):
+    message: str
+    settings: RequestSettings
+
+class CopilotMessageResponse(BaseModel):
+    content: str
+    isError: bool
+```
+
+## Connector Properties
+
+Here are some definitions of connectors that determine how they are displayed, categorized, and launched.
 
 |Property name|Required?|Description|Example value|
 |-|-|-|-|
-|id|Y|连接器标识符，它应该是唯一的|com.richasy.connector|
-|name|Y|连接器名称，它会被显示在UI上|My Connector|
-|base_url|Y|API服务地址，必须是http/https协议|http://localhost:8000|
-|config_path|N|如果连接器需要用户手动配置，比如添加密钥等，可以在这里写上配置文件的相对路径|config.json|
-|readme|N|如果有说明文件，请填写此字段，用户导入后，应用会自动打开说明文件|README.txt|
-|execute_name|N|如果api服务入口是一个可执行文件，请填写此字段|api.exe|
-|script_file|N|如果api服务需要通过运行脚本来启动，请填写此字段，应用会通过powershell运行此脚本|run.ps1|
-|script_command|N|如果api服务需要通过命令来启动，请填写此字段，应用会通过powershell执行此命令|python api.py|
-|features|Y|Feature列表，请参见 [Feature](#Feature)|[{...}, {...}]|
+|id|Y|Identifier of the connector, it should be unique|com.richasy.connector|
+|name|Y|Name of the connector, it will be displayed on the UI|My Connector|
+|base_url|Y|API service address, must be http/https protocol|http://localhost:8000|
+|config_path|N|If the connector requires manual configuration by the user, such as adding keys, etc., the relative path of the configuration file can be written here|config.json|
+|readme|N|If there is a description file, please fill in this field. After the user imports, the application will automatically open the description file|README.txt|
+|execute_name|N|If the API service entry is an executable file, please fill in this field|api.exe|
+|script_file|N|If the API service needs to be started by running a script, please fill in this field. The application will run this script through powershell|run.ps1|
+|script_command|N|If the API service needs to be started by a command, please fill in this field. The application will execute this command through powershell|python api.py|
+|features|Y|List of Features, please refer to [Feature](#Feature)|[{...}, {...}]|
 
 > **NOTE**  
-> `execute_name`, `script_file` 和 `script_command` 是 API 服务的主要启动方式，一个连接器只能选择其中一种启动方式。  
-> 如果你的 API 服务部署在云上，且数据结构符合 Fantasy Copilot 的预期，那么可以省略这几个字段，将你的部署网址填入 `base_url` 即可。
+> `execute_name`, `script_file` and `script_command` are the main ways to start the API service, and a connector can only choose one of them.  
+> If your API service is deployed in the cloud and the data structure meets the expectations of Fantasy Copilot, you can omit these fields and fill in your deployment URL in `base_url`.
 
 ## Feature
 
-Feature 定义了连接器支持的功能。
+Feature defines the features supported by the connector.
 
 |Property name|Required?|Description|Example value|
 |-|-|-|-|
-|type|Y|功能类型，目前支持 `chat`, `text-completion` 和 `embedding`| chat|
-|endpoints|Y|定义的 API 终结点列表，其具体数据结构参见 [Endpoint](#Endpoint)|[{...}, {...}]|
+|type|Y|Feature type, currently supports `chat`, `text-completion` and `embedding`| chat|
+|endpoints|Y|Defined API endpoints list, see [Endpoint](#Endpoint) for specific data structure|[{...}, {...}]|
 
-### 关于功能类型
+### About Feature Type
 
-- `chat`：该连接器支持对话。它可以被用在 `会话` 场景。
-- `text-completion`：该连接器支持文本完成。它同样适用于 `chat` 的使用场景，但是如果你需要使用 `知识库` 或者 `语义技能` 等功能，你必须添加 `文本完成模型`。
-- `embedding`: 该连接器支持文本向量化（嵌入）。如果你需要使用知识库，那么你必须要添加支持 embedding 的连接器。
+- `chat`: The connector supports conversation. It can be used in `session` scenarios.
+- `text-completion`: The connector supports text completion. It is also applicable to the use scenarios of `chat`, but if you need to use `knowledge base` or `semantic skills`, you must add `text completion model`.
+- `embedding`: The connector supports text vectorization (embedding). If you need to use knowledge base, you must add a connector that supports embedding.
 
 ## Endpoint
 
-Endpoint指的是我们的 API 端点。
+Endpoint refers to our API endpoints.
 
 |Property name|Required?|Description|Example value|
 |-|-|-|-|
-|type|Y|定义终结点类型，关于支持的终结点类型，请查看 [Endpoint type](#Endpoint-type)|chat-rest|
-|path|Y|终结点相对于 `base_url` 的路径|`/chat`|
+|type|Y|Defines the endpoint type, see [Endpoint type](#Endpoint-type) for supported endpoint types|chat-rest|
+|path|Y|Endpoint path relative to `base_url`|`/chat`|
 
-最终，应用会根据当前设置，将 `base_url` 和 `path` 进行拼接，形成如 `http://localhost:8000/chat` 这样的完整 url。
+Finally, the application will splice `base_url` and `path` according to the current settings to form a complete url such as `http://localhost:8000/chat`.
 
 ### Endpoint type
 
-|Type|所属功能|描述|
+|Type|Belonging feature|Description|
 |-|-|-|
-|`chat-rest`|`chat`|它表示一次聊天 POST 请求，服务会返回完整的文本响应|
-|`chat-stream`|`chat`|服务会以SSE（Server-Send Events）的方式逐字生成并返回|
-|`chat-stream-cancel`|`chat`|告知服务停止执行 `chat-stream`|
-|`text-completion-rest`|`text-completion`|服务会在文本完成之后返回完整响应|
-|`text-completion-stream`|`text-completion`|服务会以SSE（Server-Send Events）的方式逐字生成并返回|
-|`text-completion-cancel`|`text-completion`|告知服务停止执行 `text-completion-stream`|
-|`embedding-rest`|`embedding`|传入文本，并生成向量，然后返回结果|
+|`chat-rest`|`chat`|It represents a chat POST request, and the service will return a complete text response|
+|`chat-stream`|`chat`|The service will generate and return one character at a time in the form of SSE (Server-Send Events)|
+|`chat-stream-cancel`|`chat`|Inform the service to stop executing `chat-stream`|
+|`text-completion-rest`|`text-completion`|The service will return a complete response after text completion|
+|`text-completion-stream`|`text-completion`|The service will generate and return one character at a time in the form of SSE (Server-Send Events)|
+|`text-completion-cancel`|`text-completion`|Inform the service to stop executing `text-completion-stream`|
+|`embedding-rest`|`embedding`|Input text and generate vectors, then return the result|
 
-## 完整配置
+## Full Configuration
 
 ```json
 {
